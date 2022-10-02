@@ -60,7 +60,7 @@ function updateSubtotal(product) {
 	// console.log('The target in remove is:', target);
 	// console.log("por finnnn");
 	target.parentNode.parentNode.remove();
-
+	calculateAll();
 	//... your code goes here
   }
 
@@ -70,9 +70,8 @@ function updateSubtotal(product) {
 	//... your code goes here
 	console.log("funciona");
 
-	let name = document.querySelectorAll('.create-product td')[0].value;
-
-	let price = document.querySelectorAll('.create-product td')[1].value;
+	let name = document.querySelector('.create-product input[type="text"]').value;
+	let price = document.querySelector('.create-product input[type="number"]').value
 
 	let caja = document.querySelector('#cart tbody');
 	caja.insertAdjacentHTML("beforeend", `<tr class="product">
@@ -89,9 +88,7 @@ function updateSubtotal(product) {
 	</td>
   </tr>`);
 	
-
-
-
+  cuantosHAY();
 
   }
   
@@ -101,13 +98,17 @@ function updateSubtotal(product) {
 	calculatePricesBtn.addEventListener('click', calculateAll);
     document.getElementById('create').addEventListener('click', createProduct);
 	//... your code goes here
-    const todoList = document.querySelectorAll('.product .action .btn-remove');
+	cuantosHAY();
+
+  });
+
+
+
+  function cuantosHAY (){
+	const todoList = document.querySelectorAll('.product .action .btn-remove');
     for (let i = 0; i < todoList.length; i++) {
         const element = todoList[i];
         // Agregamos el evento de click para cada boton de la lista de tareas
         element.addEventListener('click', removeProduct);
     }
-  });
-
-
-
+  }
